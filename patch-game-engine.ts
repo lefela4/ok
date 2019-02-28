@@ -26,7 +26,8 @@ const version = args._[0];
     console.log('downloaded', jsFile.length);
 
     const changeset = [
-        [/(case)( )((o))(\.)(ACTION_UPDATE)(:)(return)( )((?:[a-z][a-z0-9_]*))(\.)((?:[a-z][a-z]+))(!)(=)(=)((?:[a-z][a-z0-9_]*))(\.)((?:[a-z][a-z0-9_]*))(\?)(Object\.assign)(\()(\{\})(,)((?:[a-z][a-z0-9_]*))(.)(\{playAgainMapTitle:t\.map_title\})(\))(:)((?:[a-z][a-z0-9_]*))(;)/i, '$1$2$3$4$5$6var x = $19$20$21$22$23$24$25$26;return window.ai.applyUpdate(x);'],
+        [/(var)( )((?:[a-z][a-z0-9_]*))(;)(return)( )((?:[a-z][a-z0-9_]*))(\.)(map_diff)(&)(&)/i , 'var x; $1$2$3$4\n$7$8$9$10$11$12'],
+        [/(Object\.assign\(\{\})(,)((?:[a-z][a-z0-9_]*))(,)((?:[a-z][a-z0-9_]*))(\))(;)(case)( )((?:[a-z][a-z0-9_]*))(\.)(ACTION_LOSE)(:)/i , 'x =$1$2$3$4$5$6$7 \n return window.ai.applyUpdate(x);$8$9$10$11$12$13'],
         [/(stopListenForPublicCustoms)(:)((?:[a-z][a-z0-9_]*))(,)(clearNotif)(:)((?:[a-z][a-z0-9_]*))(\})/i , ';$1$2$3$4$5$6$7$8\n window.gameCtrl = e.exports;']
     ];
 
